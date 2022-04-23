@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Paper Graph{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Paper Info</h1>
+            <p>Press Build to get graph results of papers.</p>
+            <br>
+            <form action="{% url 'graph-content' %}" method="get">
+                <div class="row">
+                   <div class="col-lg-6">
+                       <div class="input-group">
+                           <div class="input-group-btn">
+                               <input type="hidden" id="graph-type" name="graph-type" value="doi"/>
+                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <span id="typeText" class="buttonText">doi</span>
+                                   <span class="caret"></span>
+                               </button>
+
+                               <ul class="dropdown-menu" role="menu">
+                                   <li><a href="#" onclick="shows($(this).text(), 'doi')">doi</a></li>
+                                   <li><a href="#" onclick="shows($(this).text(), 'author')">author</a></li>
+                               </ul>
+                           </div>
+
+                           <input type="text" name="graph-content" placeholder="author id/author name or paper doi" class="form-control"/>
+                       </div>
+                   </div>
+                </div>
+                <br>
+                <input class="btn btn-primary btn-lg" value="Build" type="submit">
+            </form>
+        </div>
+    </div>
+    <script>
+        function shows(a, value) {
+            $('.buttonText').text(a);
+            $('#graph-type').val(value);
+        }
+    </script>
+{% endblock %}

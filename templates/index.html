@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Paper Info</h1>
+            <p>Press Search to start your journey in papers.</p>
+            <br>
+            <form action="{% url 'search-content' %}" method="get">
+                <div class="row">
+                   <div class="col-lg-6">
+                       <div class="input-group">
+                           <div class="input-group-btn">
+                               <input type="hidden" id="search-type" name="search-type" value="doi"/>
+                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <span id="typeText" class="buttonText">doi</span>
+                                   <span class="caret"></span>
+                               </button>
+
+                               <ul class="dropdown-menu" role="menu">
+                                   <li><a href="#" onclick="shows($(this).text(), 'keyword')">keyword</a></li>
+                                   <li><a href="#" onclick="shows($(this).text(), 'doi')">doi</a></li>
+                                   <li><a href="#" onclick="shows($(this).text(), 'title')">title</a></li>
+                               </ul>
+                           </div>
+
+                           <input type="text" name="search-content" placeholder="keyword/paper doi/title" class="form-control"/>
+                       </div>
+                   </div>
+                </div>
+                <br>
+                <input class="btn btn-primary btn-lg" value="Search" type="submit">
+            </form>
+        </div>
+    </div>
+    <script>
+        function shows(a, value) {
+            $('.buttonText').text(a);
+            $('#search-type').val(value);
+        }
+    </script>
+{% endblock %}

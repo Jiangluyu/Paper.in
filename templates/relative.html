@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Relative Papers{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Paper Info</h1>
+            <p>Press Search to get 10 most relative papers.</p>
+            <br>
+            <form action="{% url 'relative-content' %}" method="get">
+                <input type="text" id="relative-content" name="relative-content" placeholder="paper doi" class="form-control"/>
+                <br>
+                <input class="btn btn-primary btn-lg" value="Search" type="submit">
+            </form>
+            <br>
+            <br>
+            {% for a in articles %}
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">{{ a }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Visualization{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Paper Info</h1>
+            <p>Press Go! to get visualization of papers.</p>
+            <br>
+            <form action="{% url 'visualization' %}" method="get">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <input type="hidden" id="visual-type" name="visual-type" value="hotspots"/>
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <span id="typeText" class="buttonText">hotspots</span>
+                                   <span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu" role="menu">
+                                   <li><a href="#" onclick="showType($(this).text(), 'hotspots')">hotspots</a></li>
+                                   <li><a href="#" onclick="showType($(this).text(), 'plots')">plots</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="input-group-btn">
+                                <input type="hidden" id="visual-criteria" name="visual-criteria" value="author"/>
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <span id="criteriaText" class="buttonText">by author</span>
+                                   <span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu" role="menu">
+                                   <li><a href="#" onclick="showCriteria($(this).text(), 'author')">by author</a></li>
+                                   <li><a href="#" onclick="showCriteria($(this).text(), 'year')">by year</a></li>
+                                </ul>
+                            </div>
+                            <input type="text" name="visual-content" placeholder="author id/author name/year range(delims: ',' or '-')" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <input class="btn btn-primary btn-lg" value="Go!" type="submit">
+            </form>
+        </div>
+    </div>
+    <script>
+        function showType(a, value) {
+            $('#typeText').text(a);
+            $('#visual-type').val(value);
+        }
+
+        function showCriteria(a, value) {
+            $('#criteriaText').text(a);
+            $('#visual-criteria').val(value);
+        }
+    </script>
+
+    <div>
+
+    </div>
+{% endblock %}
