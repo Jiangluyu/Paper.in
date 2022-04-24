@@ -32,6 +32,70 @@
                 <input class="btn btn-primary btn-lg" value="Build" type="submit">
             </form>
         </div>
+        <br>
+        {% if paper_topic_pagerank %}
+            <div class="container">
+                <h3>paper topic page rank</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>doi</th>
+                            <th>pagerank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pK, pV in paper_topic_pagerank.items %}
+                            <tr>
+                                <th><a href="https://sci-hub.se/{{ pK }}">{{ pK }}</a></th>
+                                <td>{{ pV }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+
+        {% if paper_lpa %}
+            <div class="container">
+                <h3>lpa-method list</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>doi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in paper_lpa %}
+                            <tr>
+                                <td><a href="https://sci-hub.se/{{ p }}">{{ p }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+
+        {% if author_simrank %}
+            <div class="container">
+                <h3>author sim rank</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>author</th>
+                            <th>sim rank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pK, pV in author_simrank.items %}
+                            <tr>
+                                <th>{{ pK.author_name }}</th>
+                                <td>{{ pV }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
     </div>
     <script>
         function shows(a, value) {

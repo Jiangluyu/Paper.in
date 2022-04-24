@@ -11,69 +11,71 @@
             <!-- Table -->
             <table class="table">
                 <thead>
-                <tr>
-                    <th>Type</th>
-                    <th>Value</th>
-                </tr>
+                    <tr>
+                        <th>Type</th>
+                        <th>Value</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th> title </th>
-                    <td> {{ paper.title }} </td>
-                </tr>
-                <tr>
-                    <th>doi</th>
-                    <td> {{ paper.paper_doi }}</td>
-                </tr>
-                <tr>
-                    <th>published by</th>
-                    <td> {{ paper.publishedby }}</td>
-                </tr>
-                <tr>
-                    <th>author id</th>
-                    <td> {{ paper.author_id }}</td>
-                </tr>
-                <tr>
-                    <th>IEEE keywords</th>
-                    <td>{{ paper.ieee_keywords }}</td>
-                </tr>
-                <tr>
-                    <th>authors keywords</th>
-                    <td>{{ paper.authors_keywords }}</td>
-                </tr>
-                <tr>
-                    <th>pubTopics</th>
-                    <td>{{ paper.pubTopics }}</td>
-                </tr>
-                <tr>
-                    <th>publication number</th>
-                    <td>{{ paper.publicationNumber }}</td>
-                </tr><tr>
-                    <th>year</th>
-                    <td>{{ paper.publicationDate }}</td>
-                </tr><tr>
-                    <th>metrics</th>
-                    <td>{{ paper.metrics }}</td>
-                </tr>
-                <tr>
-                    <th>references</th>
-                    <td>
-                        <ol type="1" start="1">
-                            {% for ref in paper.refs %}
-                                <li>{{ ref }}</li>
+                    <tr>
+                        <th> title </th>
+                        <td> {{ paper.title }} </td>
+                    </tr>
+                    <tr>
+                        <th>doi</th>
+                        <td> <a href="https://sci-hub.se/{{ paper.paper_doi }}">{{ paper.paper_doi }}</a></td>
+                    </tr>
+                    <tr>
+                        <th>published by</th>
+                        <td> {{ paper.publishedby }}</td>
+                    </tr>
+                    <tr>
+                        <th>author id</th>
+                        <td> {{ paper.author_id }}</td>
+                    </tr>
+                    <tr>
+                        <th>IEEE keywords</th>
+                        <td>{{ paper.ieee_keywords }}</td>
+                    </tr>
+                    <tr>
+                        <th>authors keywords</th>
+                        <td>{{ paper.authors_keywords }}</td>
+                    </tr>
+                    <tr>
+                        <th>pubTopics</th>
+                        <td>{{ paper.pubTopics }}</td>
+                    </tr>
+                    <tr>
+                        <th>publication number</th>
+                        <td>{{ paper.publicationNumber }}</td>
+                    </tr>
+                    <tr>
+                        <th>year</th>
+                        <td>{{ paper.publicationDate }}</td>
+                    </tr>
+                    <tr>
+                        <th>metrics</th>
+                        <td>{{ paper.metrics }}</td>
+                    </tr>
+                    <tr>
+                        <th>references</th>
+                        <td>
+                            <ol type="1" start="1">
+                                {% for ref in paper.refs %}
+                                    <li>{{ ref }}</li>
+                                {% endfor %}
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>google scholar link</th>
+                        <td>
+                            {% for link in paper.googleScholarLink %}
+                                <a href="{{ link }}">{{ link }}</a>
+                                <br>
                             {% endfor %}
-                        </ol>
-                    </td>
-                </tr>
-                <tr>
-                    <th>google scholar link</th>
-                    <td>
-                        {% for link in paper.googleScholarLink %}
-                            <a href="{{ link }}">{{ link }}</a>
-                            <br>
-                        {% endfor %}
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
